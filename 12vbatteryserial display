@@ -1,0 +1,27 @@
+/*********
+  Rui Santos
+  Complete project details at https://randomnerdtutorials.com  
+*********/
+
+const int analogInPin = A0;  // ESP8266 Analog Pin ADC0 = A0
+
+int adc_read = 0;
+float battery_voltage = 0;
+
+void setup() {
+  // initialize serial communication at 115200
+  Serial.begin(115200);
+}
+
+void loop() {
+  // read the analog in value
+  adc_read = analogRead(analogInPin);
+  //using r1 = 33k and r2 = 10k concidering 14.2 volt max 
+ 
+  // print the readings in the Serial Monitor
+   battery_voltage = (adc_read*(3.3/1024)*(42.78))/10;
+  Serial.println(battery_voltage);
+  //SerialBT.println(battery_voltage);
+  
+  delay(1000);
+}
